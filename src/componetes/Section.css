@@ -1,0 +1,31 @@
+section {
+  grid-area: 2/1;
+  padding: 1rem;
+}
+
+.exemplo-card {
+  height: 40%;
+  width: 25%;
+  max-width: 230px;
+  max-height: 260px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  background-color: var(--cor-tema);
+  display: flex;
+  flex-direction: column;
+}
+.img {
+  height: 40%;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  background-color: white;
+}
+.dados {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  padding: 0.5rem;
+  height: 60%;
+  width: 100%;
+}

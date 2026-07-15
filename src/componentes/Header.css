@@ -5,6 +5,11 @@ header {
   grid-area: 1/1/2/3;
 }
 header p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
   font-size: 1.1rem;
 }
 header div {
@@ -30,4 +35,13 @@ header input {
   height: 50%;
   padding: 0.5rem;
   grid-area: 2/3/-1/-1;
+}
+.cadastrar p {
+  align-self: center;
+}
+header div:hover {
+  border: 1px solid white;
+  cursor: pointer;
+  background-color: var(--cor-tema);
+  color: white;
 }

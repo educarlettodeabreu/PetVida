@@ -37,6 +37,9 @@ function App() {
   const [Finalizado] = useState(
     Pets.filter((pet) => pet.status === "Finalizado"),
   );
+  const abrirformulario = () => {
+    Cadastro.display = "flex";
+  }
 
   return (
     <div className="App">
@@ -45,7 +48,7 @@ function App() {
         atendimento={Atendimento.length}
         finalizado={Finalizado.length}
         cadastrados={Pets.length}
-        cadastrarPet={() => alert("Cadastrar Pet")}
+        cadastrarPet={abrirformulario}
       />
       <Section pets={Pets} />
       <Cadastro />

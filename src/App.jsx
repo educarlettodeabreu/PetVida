@@ -37,9 +37,13 @@ function App() {
   const [Finalizado] = useState(
     Pets.filter((pet) => pet.status === "Finalizado"),
   );
+  const [exibircadastro, setexibircadastro] = useState(false);
   const abrirformulario = () => {
-    Cadastro.display = "flex";
-  }
+    setexibircadastro(true);
+  };
+  const voltar = () => {
+    setexibircadastro(false);
+  };
 
   return (
     <div className="App">
@@ -51,7 +55,7 @@ function App() {
         cadastrarPet={abrirformulario}
       />
       <Section pets={Pets} />
-      <Cadastro />
+      <Cadastro display={exibircadastro ? "flex" : "none"} voltar={voltar} />
     </div>
   );
 }

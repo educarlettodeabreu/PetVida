@@ -1,3 +1,10 @@
+.conteiner {
+  position: fixed;
+  z-index: 1000;
+  display: none;
+  height: 100vh;
+  width: 100vw;
+}
 .Cadastro {
   display: flex;
   justify-content: start;
@@ -19,7 +26,7 @@
 }
 
 .Cadastro form {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;

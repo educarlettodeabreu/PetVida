@@ -44,7 +44,11 @@ function App() {
   const voltar = () => {
     setexibircadastro(false);
   };
-
+  const Cadastrar = (e) => {
+    e.preventDefault();
+    const formdata = new FormData(e.target);
+    const dados = Object.fromEntries(formdata.entries());
+  };
   return (
     <div className="App">
       <Header
@@ -55,7 +59,11 @@ function App() {
         cadastrarPet={abrirformulario}
       />
       <Section pets={Pets} />
-      <Cadastro display={exibircadastro ? "flex" : "none"} voltar={voltar} />
+      <Cadastro
+        display={exibircadastro ? "flex" : "none"}
+        voltar={voltar}
+        Cadastrar={Cadastrar}
+      />
     </div>
   );
 }

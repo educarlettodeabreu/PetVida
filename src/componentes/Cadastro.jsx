@@ -8,14 +8,16 @@ function Cadastro(props) {
     >
       <div className="Cadastro" onClick={(e) => e.stopPropagation()}>
         <h2>Cadastro de Pets</h2>
-        <form>
-          <input type="text" placeholder="Nome do Pet" />
-          <input type="text" placeholder="Espécie" />
-          <input type="text" placeholder="Dono" />
-          <input type="text" placeholder="Raça" />
-          <input type="text" placeholder="Idade" />
-          <input type="number" placeholder="telefone" />
-          <input type="text" placeholder="Observações" />
+        <form onSubmit={props.Cadastrar}>
+          <input type="text" name="nome" placeholder="Nome do Pet" />
+          <input type="text" name="especie" placeholder="Espécie" />
+          <input type="text" name="dono" placeholder="Dono" />
+          <input type="text" name="raca" placeholder="Raça" />
+          <input type="text" name="idade" placeholder="Idade" />
+          <input type="number" name="telefone" placeholder="telefone" />
+          <input type="text" name="observacoes" placeholder="Observações" />
+          <label htmlFor="imagem">imagem do pet</label>
+          <input type="file" name="imagem" id="imagem" accept="image/*" />
           <button type="submit">Cadastrar</button>
         </form>
       </div>

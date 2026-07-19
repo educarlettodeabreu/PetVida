@@ -48,6 +48,7 @@ function App() {
     e.preventDefault();
     const formdata = new FormData(e.target);
     const dados = Object.fromEntries(formdata.entries());
+    const arquivo = formdata.get("imagem");
     const reader = new FileReader();
     reader.onload = (event) => {
       const base64img = event.target.result;
@@ -60,11 +61,11 @@ function App() {
       };
 
       setPets([...Pets, novoPet]);
+      setexibircadastro(false);
     };
-    if (dados) {
-      reader.readAsDataURL(dados);
+    if (arquivo) {
+      reader.readAsDataURL(arquivo);
     }
-    setexibircadastro(false);
   };
   return (
     <div className="App">

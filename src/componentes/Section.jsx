@@ -15,7 +15,10 @@ function Section(props) {
                   : "var(--finalizado)",
           }}
         >
-          <div className="img">imagem do pet</div>
+          <div
+            className="img"
+            style={{ backgroundImage: `url(${pet.imagem})` }}
+          ></div>
           <div className="dados">
             <p>Nome: {pet.name}</p>
             <p>Espécie: {pet.especie}</p>

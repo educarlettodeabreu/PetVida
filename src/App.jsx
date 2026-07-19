@@ -4,7 +4,7 @@ import Header from "./componentes/Header.jsx";
 import Section from "./componentes/Section.jsx";
 import Cadastro from "./componentes/Cadastro.jsx";
 function App() {
-  const [Pets] = useState([
+  const [Pets, setPets] = useState([
     {
       id: 1,
       name: "Apolo",
@@ -48,6 +48,23 @@ function App() {
     e.preventDefault();
     const formdata = new FormData(e.target);
     const dados = Object.fromEntries(formdata.entries());
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const base64img = event.target.result;
+
+      const novoPet = {
+        ...dados,
+        id: Date.now(),
+        status: "aguardando",
+        imagem: base64img,
+      };
+
+      setPets([...Pets, novoPet]);
+    };
+    if (dados) {
+      reader.readAsDataURL(dados);
+    }
+    setexibircadastro(false);
   };
   return (
     <div className="App">

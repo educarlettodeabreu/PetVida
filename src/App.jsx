@@ -56,7 +56,7 @@ function App() {
       const novoPet = {
         ...dados,
         id: Date.now(),
-        status: "aguardando",
+        status: "Aguardando",
         imagem: base64img,
       };
 
@@ -67,16 +67,33 @@ function App() {
       reader.readAsDataURL(arquivo);
     }
   };
+  const [textobusca, settextobusca] = useState("");
+  const buscarPet = (e) => {
+    settextobusca(e.target.value.toLowerCase());
+  };
+
+  const [Filtro, setFiltro] = useState("todos");
+  const filtrar = (status) => {
+    setFiltro(status);
+  };
+  const petsfiltrados = Pets.filter((pet) => {
+    const atendestatus = Filtro === "todos" || pet.status === Filtro;
+    const Petvalues = Object.values(pet).join(" ").toLowerCase();
+    const atendebusca = Petvalues.includes(textobusca);
+    return atendestatus && atendebusca;
+  });
   return (
     <div className="App">
       <Header
+        buscar={buscarPet}
+        filtrar={filtrar}
         aguardando={aguardando.length}
         atendimento={Atendimento.length}
         finalizado={Finalizado.length}
         cadastrados={Pets.length}
         cadastrarPet={abrirformulario}
       />
-      <Section pets={Pets} />
+      <Section pets={petsfiltrados} />
       <Cadastro
         display={exibircadastro ? "flex" : "none"}
         voltar={voltar}

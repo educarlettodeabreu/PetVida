@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "./componentes/Header.jsx";
 import Section from "./componentes/Section.jsx";
 import Cadastro from "./componentes/Cadastro.jsx";
+import Modal from "./componentes/Modal.jsx";
 function App() {
   const [Pets, setPets] = useState([
     {
@@ -82,6 +83,11 @@ function App() {
     const atendebusca = Petvalues.includes(textobusca);
     return atendestatus && atendebusca;
   });
+  const [petClicado, setpetClicado] = useState(null);
+  const expandir = (pet) => {
+    setpetClicado(pet);
+  };
+
   return (
     <div className="App">
       <Header
@@ -93,12 +99,13 @@ function App() {
         cadastrados={Pets.length}
         cadastrarPet={abrirformulario}
       />
-      <Section pets={petsfiltrados} />
+      <Section pets={petsfiltrados} aoClicar={expandir} />
       <Cadastro
         display={exibircadastro ? "flex" : "none"}
         voltar={voltar}
         Cadastrar={Cadastrar}
       />
+      <Modal pet={petClicado} />
     </div>
   );
 }

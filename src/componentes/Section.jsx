@@ -4,6 +4,7 @@ function Section(props) {
     <section>
       {props.pets.map((pet) => (
         <div
+          onClick={() => props.aoClicar(pet)}
           className="card"
           key={pet.id}
           style={{

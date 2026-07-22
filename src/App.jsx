@@ -1,34 +1,43 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./componentes/Header.jsx";
 import Section from "./componentes/Section.jsx";
 import Cadastro from "./componentes/Cadastro.jsx";
 import Modal from "./componentes/Modal.jsx";
 import Excluir from "./componentes/Excluir.jsx";
 function App() {
-  const [Pets, setPets] = useState([
-    {
-      id: 1,
-      name: "Apolo",
-      especie: "Cachorro",
-      dono: "Eduardo",
-      status: "Aguardando",
-    },
-    {
-      id: 2,
-      name: "Luna",
-      especie: "Gato",
-      dono: "Maria",
-      status: "Em atendimento",
-    },
-    {
-      id: 3,
-      name: "Max",
-      especie: "Cachorro",
-      dono: "João",
-      status: "Finalizado",
-    },
-  ]);
+  const [Pets, setPets] = useState(() => {
+    const petSalvos = localStorage.getItem("meus-pets");
+    if (petSalvos) {
+      return JSON.parse(petSalvos);
+    }
+    return [
+      {
+        id: 1,
+        name: "Apolo",
+        especie: "Cachorro",
+        dono: "Eduardo",
+        status: "Aguardando",
+      },
+      {
+        id: 2,
+        name: "Luna",
+        especie: "Gato",
+        dono: "Maria",
+        status: "Em atendimento",
+      },
+      {
+        id: 3,
+        name: "Max",
+        especie: "Cachorro",
+        dono: "João",
+        status: "Finalizado",
+      },
+    ];
+  });
+  useEffect(() => {
+    localStorage.setItem("meus-pets", JSON.stringify(Pets));
+  }, [Pets]);
 
   const aguardando = Pets.filter((pet) => pet.status === "Aguardando");
   const Atendimento = Pets.filter((pet) => pet.status === "Em atendimento");
@@ -94,6 +103,15 @@ function App() {
       setexcluirpet(true);
     }
   };
+  const [petselecionado, setpetselecionado] = useState(null);
+  const selecionarPet = (pet) => {
+    setpetselecionado(pet);
+  };
+  const excluirPet = () => {
+    const arraynovo = Pets.filter((pet) => pet.id !== petselecionado.id);
+    setPets(arraynovo);
+    abrirexcluir();
+  };
 
   return (
     <div className="App">
@@ -107,6 +125,7 @@ function App() {
         cadastrarPet={abrirformulario}
       />
       <Section
+        selecionar={selecionarPet}
         pets={petsfiltrados}
         aoClicar={expandir}
         excluirpet={abrirexcluir}
@@ -117,7 +136,11 @@ function App() {
         Cadastrar={Cadastrar}
       />
       <Modal pet={petClicado} fechar={fechar} />
-      <Excluir excluirpet={excluirpet} cancelar={abrirexcluir} />
+      <Excluir
+        cancelar={abrirexcluir}
+        excluir={excluirPet}
+        excluirpet={excluirpet}
+      />
     </div>
   );
 }

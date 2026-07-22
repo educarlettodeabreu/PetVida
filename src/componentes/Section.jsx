@@ -8,6 +8,7 @@ function Section(props) {
           onContextMenu={(e) => {
             e.preventDefault();
             props.excluirpet();
+            props.selecionar(pet);
           }}
           className="card"
           key={pet.id}

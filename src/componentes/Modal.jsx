@@ -1,9 +1,19 @@
 import "./Modal.css";
-function Modal({ pet }) {
+function Modal({ pet, fechar }) {
   if (!pet) return null;
   return (
-    <div className="contain">
-      <div className="modal">
+    <div
+      className="contain"
+      onClick={() => {
+        fechar();
+      }}
+    >
+      <div
+        className="modal"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <div
           className="imagemodal"
           style={{ backgroundImage: `url(${pet.imagem})` }}

@@ -1,0 +1,52 @@
+.espaco {
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  position: fixed;
+}
+.bloco {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  position: fixed;
+  top: 30vh;
+  left: 35vw;
+  height: 20vh;
+  width: 30vw;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  border: 2px solid gray;
+  overflow: hidden;
+}
+.bloco p {
+  font-size: 1.3em;
+  padding: 10px;
+  grid-area: 1/1/2/-1;
+}
+.btn-excluir {
+  background-color: red;
+  border-radius: 0 0 0 10px;
+}
+.btn-excluir:hover {
+  color: red;
+  border-color: red;
+}
+.btn-excluir:active {
+  color: white;
+  background-color: red;
+}
+.cancelar {
+  background-color: gray;
+  border-radius: 0 0 10px 0;
+}
+.cancelar:hover {
+  color: black;
+  border-color: black;
+}
+.cancelar:active {
+  background-color: gray;
+  color: white;
+}
+button {
+  font-size: 1.1em;
+}

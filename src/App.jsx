@@ -4,6 +4,7 @@ import Header from "./componentes/Header.jsx";
 import Section from "./componentes/Section.jsx";
 import Cadastro from "./componentes/Cadastro.jsx";
 import Modal from "./componentes/Modal.jsx";
+import Excluir from "./componentes/Excluir.jsx";
 function App() {
   const [Pets, setPets] = useState([
     {
@@ -29,15 +30,10 @@ function App() {
     },
   ]);
 
-  const [aguardando] = useState(
-    Pets.filter((pet) => pet.status === "Aguardando"),
-  );
-  const [Atendimento] = useState(
-    Pets.filter((pet) => pet.status === "Em atendimento"),
-  );
-  const [Finalizado] = useState(
-    Pets.filter((pet) => pet.status === "Finalizado"),
-  );
+  const aguardando = Pets.filter((pet) => pet.status === "Aguardando");
+  const Atendimento = Pets.filter((pet) => pet.status === "Em atendimento");
+  const Finalizado = Pets.filter((pet) => pet.status === "Finalizado");
+
   const [exibircadastro, setexibircadastro] = useState(false);
   const abrirformulario = () => {
     setexibircadastro(true);
@@ -87,6 +83,17 @@ function App() {
   const expandir = (pet) => {
     setpetClicado(pet);
   };
+  const fechar = () => {
+    setpetClicado(null);
+  };
+  const [excluirpet, setexcluirpet] = useState(false);
+  const abrirexcluir = () => {
+    if (excluirpet === true) {
+      setexcluirpet(false);
+    } else if (excluirpet === false) {
+      setexcluirpet(true);
+    }
+  };
 
   return (
     <div className="App">
@@ -99,13 +106,18 @@ function App() {
         cadastrados={Pets.length}
         cadastrarPet={abrirformulario}
       />
-      <Section pets={petsfiltrados} aoClicar={expandir} />
+      <Section
+        pets={petsfiltrados}
+        aoClicar={expandir}
+        excluirpet={abrirexcluir}
+      />
       <Cadastro
         display={exibircadastro ? "flex" : "none"}
         voltar={voltar}
         Cadastrar={Cadastrar}
       />
-      <Modal pet={petClicado} />
+      <Modal pet={petClicado} fechar={fechar} />
+      <Excluir excluirpet={excluirpet} cancelar={abrirexcluir} />
     </div>
   );
 }

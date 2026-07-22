@@ -5,6 +5,10 @@ function Section(props) {
       {props.pets.map((pet) => (
         <div
           onClick={() => props.aoClicar(pet)}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            props.excluirpet();
+          }}
           className="card"
           key={pet.id}
           style={{

@@ -112,6 +112,12 @@ function App() {
     setPets(arraynovo);
     abrirexcluir();
   };
+  const editar = (valor) => {
+    const novoarray = Pets.map((pet) => {
+      pet.id === valor.id ? valor : pet;
+    });
+    setPets(novoarray);
+  };
 
   return (
     <div className="App">
@@ -135,7 +141,7 @@ function App() {
         voltar={voltar}
         Cadastrar={Cadastrar}
       />
-      <Modal pet={petClicado} fechar={fechar} />
+      <Modal pet={petClicado} fechar={fechar} editar={editar} />
       <Excluir
         cancelar={abrirexcluir}
         excluir={excluirPet}

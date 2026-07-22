@@ -29,7 +29,8 @@ function Modal({ pet, fechar }) {
                   : "var(--finalizado)",
           }}
         >
-          <p>nome: {pet.name}</p>
+          <label htmlFor="nome">nome: </label>
+          <input type="text" id="nome" placeholder={pet.name} />
           <p>especie: {pet.especie}</p>
           <p>dono: {pet.dono}</p>
           <p>idade: {pet.idade}</p>

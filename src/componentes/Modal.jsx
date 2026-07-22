@@ -1,10 +1,11 @@
 import "./Modal.css";
-function Modal({ pet, fechar }) {
+function Modal({ pet, fechar, editar, salvar }) {
   if (!pet) return null;
   return (
     <div
       className="contain"
       onClick={() => {
+        salvar();
         fechar();
       }}
     >
@@ -30,7 +31,13 @@ function Modal({ pet, fechar }) {
           }}
         >
           <label htmlFor="nome">nome: </label>
-          <input type="text" id="nome" placeholder={pet.name} />
+          <input
+            type="text"
+            id="nome"
+            name="name"
+            placeholder={pet.name}
+            onChange={(e) => editar(e)}
+          />
           <p>especie: {pet.especie}</p>
           <p>dono: {pet.dono}</p>
           <p>idade: {pet.idade}</p>

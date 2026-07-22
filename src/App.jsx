@@ -90,6 +90,7 @@ function App() {
   });
   const [petClicado, setpetClicado] = useState(null);
   const expandir = (pet) => {
+    setobjeto(pet);
     setpetClicado(pet);
   };
   const fechar = () => {
@@ -112,9 +113,19 @@ function App() {
     setPets(arraynovo);
     abrirexcluir();
   };
-  const editar = (valor) => {
+  const [objeto, setobjeto] = useState({
+    nome: "",
+  });
+  const att = (e) => {
+    const { name, value } = e.target;
+    setobjeto({
+      ...objeto,
+      [name]: value,
+    });
+  };
+  const salvar = () => {
     const novoarray = Pets.map((pet) => {
-      pet.id === valor.id ? valor : pet;
+      return pet.id === objeto.id ? objeto : pet;
     });
     setPets(novoarray);
   };
@@ -141,7 +152,7 @@ function App() {
         voltar={voltar}
         Cadastrar={Cadastrar}
       />
-      <Modal pet={petClicado} fechar={fechar} editar={editar} />
+      <Modal pet={petClicado} fechar={fechar} editar={att} salvar={salvar} />
       <Excluir
         cancelar={abrirexcluir}
         excluir={excluirPet}

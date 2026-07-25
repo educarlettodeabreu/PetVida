@@ -23,7 +23,11 @@ function Section(props) {
         >
           <div
             className="img"
-            style={{ backgroundImage: `url(${pet.imagem})` }}
+            style={{
+              backgroundImage: pet.imagem
+                ? `url(${pet.imagem})`
+                : `url(/pet.jpg)`,
+            }}
           ></div>
           <div className="dados">
             <p>Nome: {pet.name}</p>

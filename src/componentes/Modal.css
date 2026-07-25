@@ -10,7 +10,7 @@
 }
 .modal {
   height: 70%;
-  width: 50%;
+  width: 40%;
   background: white;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -34,15 +34,60 @@
   height: 50%;
   width: 100%;
 }
-.data p {
-  width: 45%;
+.datadivs {
+  display: flex;
+  height: 13%;
   background-color: white;
   border-radius: 10px;
-  margin-top: 2px;
   box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
-  padding: 0.5rem;
+  width: 48%;
+  margin-top: 5px;
   text-align: start;
+  padding: 3px 8px;
 }
 .obs {
   height: 100%;
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 1px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  width: 50%;
+  text-align: start;
+}
+.datadivs input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 0 4px;
+}
+input:focus {
+  outline: none;
+}
+input::placeholder {
+  color: black;
+  opacity: 1;
+}
+.datadivs label {
+  height: 100%;
+  padding: 3px;
+}
+.observacoes {
+  flex-direction: column;
+  height: 100%;
+}
+.observacoes label {
+  height: 10%;
+  padding-bottom: 5px;
+}
+.observacoes textarea {
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 0 4px;
+}
+.observacoes textarea::placeholder {
+  color: black;
+  opacity: 1;
 }

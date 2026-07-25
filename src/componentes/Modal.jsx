@@ -5,7 +5,6 @@ function Modal({ pet, fechar, editar, salvar }) {
     <div
       className="contain"
       onClick={() => {
-        salvar();
         fechar();
       }}
     >
@@ -99,6 +98,22 @@ function Modal({ pet, fechar, editar, salvar }) {
               placeholder={pet.observacoes}
               onChange={(e) => editar(e)}
             />
+          </div>
+          <div className="btn">
+            <button
+              className="btnedit"
+              onClick={salvar}
+              style={{
+                backgroundColor:
+                  pet.status === "Aguardando"
+                    ? "var(--aguardando)"
+                    : pet.status === "Em atendimento"
+                      ? "var(--atendimento)"
+                      : "var(--finalizado)",
+              }}
+            >
+              Editar
+            </button>
           </div>
         </div>
       </div>

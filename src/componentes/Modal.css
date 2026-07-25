@@ -45,17 +45,6 @@
   text-align: start;
   padding: 3px 8px;
 }
-.obs {
-  height: 100%;
-  display: flex;
-  background-color: white;
-  border-radius: 10px;
-  margin-top: 1px;
-  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
-  padding: 0.5rem;
-  width: 50%;
-  text-align: start;
-}
 .datadivs input {
   height: 100%;
   width: 100%;
@@ -71,11 +60,11 @@ input::placeholder {
 }
 .datadivs label {
   height: 100%;
-  padding: 3px;
+  padding: 8px;
 }
 .observacoes {
   flex-direction: column;
-  height: 100%;
+  height: 80%;
 }
 .observacoes label {
   height: 10%;
@@ -91,4 +80,26 @@ input::placeholder {
 .observacoes textarea::placeholder {
   color: black;
   opacity: 1;
+}
+.btn {
+  height: 13%;
+  width: 48%;
+  margin-top: 5px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.btnedit {
+  width: 100%;
+  height: 100%;
+  border-style: outset;
+  border: 3px solid white;
+  border-radius: 10px;
+  color: white;
+}
+.btnedit:active {
+  border-style: inset;
+}
+.btnedit:hover {
+  color: white;
+  border-color: white;
 }
